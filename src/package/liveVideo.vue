@@ -212,14 +212,14 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style  scoped>
 .liveVideo {
   position: relative;
-  &__mask {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
+}
+.liveVideo__mask {
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 :deep() .video-js .vjs-big-play-button {
   display: none;

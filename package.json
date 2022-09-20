@@ -1,6 +1,6 @@
 {
   "name": "vue-live-video",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "video player for hls stream",
   "main": "src/package/index.js",
   "license": "MIT",
