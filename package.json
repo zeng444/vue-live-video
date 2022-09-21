@@ -1,6 +1,6 @@
 {
   "name": "vue-live-video",
-  "version": "1.0.14",
+  "version": "1.0.18",
   "description": "video player for hls stream",
   "main": "src/package/index.js",
   "license": "MIT",
@@ -11,7 +11,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hamuPP/vue-live-video.git"
+    "url": "git+https://github.com/zeng444/vue-live-video.git"
   },
   "dependencies": {
     "video.js": "^7.20.3",
