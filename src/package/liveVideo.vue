@@ -64,7 +64,6 @@ export default {
   watch: {
     src: {
       handler(val) {
-        console.info('check ' + val)
         this.setUrl(val)
       },
     },
