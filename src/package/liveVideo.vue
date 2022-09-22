@@ -21,6 +21,10 @@ export default {
       type: String,
       default: () => '1',
     },
+    rectCleanDelay: {
+      type: String,
+      default: () => '120',
+    },
     preload: {
       type: String,
       default: () => 'auto',
@@ -46,6 +50,7 @@ export default {
     return {
       player: null,
       canvas: null,
+      timer: null,
       map: {
         width: 0,
         height: 0,
@@ -84,6 +89,10 @@ export default {
       this.map.startY = 0
       this.map.endY = 0
       clean && this.claenMap()
+      if (this.timer) {
+        setTimeout(this.timer)
+        this.timer = null
+      }
       this.callback()
     },
     createMap() {
@@ -141,9 +150,11 @@ export default {
       }
       this.map.event.mouseDowned = false
       this.callback()
-      setTimeout(() => {
-        this.claenMap()
-      }, 120)
+      if (this.rectCleanDelay > 0) {
+        this.timer = setTimeout(() => {
+          this.claenMap()
+        }, Number(this.rectCleanDelay))
+      }
     },
     moveEvent($event) {
       $event.preventDefault() || $event.stopPropagation()
@@ -190,7 +201,9 @@ export default {
   },
   mounted() {
     this.initVideo()
-    this.createMap()
+    this.getVideo().on('loadstart', () => {
+      this.createMap()
+    })
   },
   created() {
     document.addEventListener('mousedown', this.downEvent)

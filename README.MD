@@ -52,6 +52,7 @@ export default {
       rectStrokeColor="#fcf63c"
       rectStrokeWidth="1"
       rectFillStyle="rgba(0, 0, 0, .2)" 
+      rectCleanDelay="2000"
       src="http://playertest.longtailvideo.com/adaptive/bipbop/gear4/prog_index.m3u8"
     >
 </template>  
@@ -67,7 +68,7 @@ export default {
   },
   methods: {
     reset() {
-      this.$refs.video.reset() //框选器结果重置
+      this.$refs.video.reset(true) //框选器重置
     },
     pause() {
       let video = this.$refs.video 
@@ -89,22 +90,22 @@ export default {
   },
   mounted() {
     let video = this.$refs.video.getVideo() //获取videoJs播放控件
-    video.on('loadstart', function () {
-      console.log('开始请求数据 ')
+    video.on('loadstart', () => {
+      console.log('开始请求数据')
     })
-    video.on('progress', function () {
-      console.log('正在请求数据 ')
+    video.on('progress', () => {
+      console.log('正在请求数据')
     })
-    video.on('loadedmetadata', function () {
+    video.on('loadedmetadata', () => {
       console.log('获取资源长度完成 ')
     })
-    video.on('canplaythrough', function () {
+    video.on('canplaythrough', () => {
       console.log('视频源数据加载完成')
     })
-    video.on('waiting', function () {
+    video.on('waiting', () => {
       console.log('等待数据')
     })
-    video.on('play', function () {
+    video.on('play', () => {
       console.log('视频开始播放')
     })
   },
@@ -121,6 +122,7 @@ export default {
 | rectStrokeColor | #fcf63c | 框选器边框颜色|
 | rectStrokeWidth| 1 | 框选器边框粗细|
 | rectFillStyle |  | 框选器填充颜色|
+| rectCleanDelay | 120  | 框选器延时消失时间，设置为0则不消失,单位毫秒|
 | src |   |  hls流播放地址，支持动态更换 |
 
 ##### Events
